@@ -6,13 +6,13 @@ import com.globallogic.javaacademy.model.PaymentStatus;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
-import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+@SuppressWarnings("all")
 public class LambdaApp {
 
     // ================================================================
@@ -37,8 +37,8 @@ public class LambdaApp {
     private static void predefinedFunctionalInterfaces() {
         Payment payment = new Payment(new BigDecimal("20.37"), "USD", PaymentStatus.NEW);
 
-        Predicate<Payment> cardPredicate = p -> p.getPaymentStatus() == PaymentStatus.NEW;
-        cardPredicate.test(payment); // returns true or false -> true
+        Predicate<Payment> newPredicate = p -> p.getPaymentStatus() == PaymentStatus.NEW;
+        newPredicate.test(payment); // returns true or false -> true
 
         Consumer<Payment> paymentConsumer = p -> System.out.println(p);
         paymentConsumer.accept(payment); // takes payment and consume (print) -> print Payment{amount=20.37, currency='USD', paymentStatus=NEW}
@@ -46,7 +46,6 @@ public class LambdaApp {
         Supplier<Payment> paymentSupplier = () -> new Payment(BigDecimal.ZERO, "USD", PaymentStatus.NEW);
         paymentSupplier.get(); // without parameters. returns payment
 
-        Function<PaymentStatus, Map<String, String>> paymentProvider2;
         Function<BigDecimal, Payment> paymentProvider = amount -> new Payment(amount, "USD", PaymentStatus.NEW);
         paymentProvider.apply(new BigDecimal("12.34")); // mix of Consumer and Supplier, takes one parameter and returns another
     }

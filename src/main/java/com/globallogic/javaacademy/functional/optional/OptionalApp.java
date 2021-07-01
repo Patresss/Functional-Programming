@@ -71,6 +71,7 @@ public class OptionalApp {
     }
 
     @Test
+    @SuppressWarnings("all")
     public void orElseVsOrElseGet() {
         System.out.println("orElse:");
         String name = Optional.ofNullable("VALUE")

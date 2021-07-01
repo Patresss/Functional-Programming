@@ -39,8 +39,8 @@ public class BehaviorParameterizationApp {
 
     // #1
     private static List<Payment> filterPlnPayments(List<Payment> payments) {
-        final var result = new ArrayList<Payment>();
-        for (Payment payment: payments) {
+        final List<Payment> result = new ArrayList<>();
+        for (final Payment payment: payments) {
             if ("PLN".equals(payment.getCurrency())) {
                 result.add(payment);
             }

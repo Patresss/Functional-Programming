@@ -181,7 +181,7 @@ public class StreamApp {
     @Test
     public void count() {
         final long result = payments.stream()
-                .map(payment -> sendNotification(payment))
+                .map(this::sendNotification)
                 .count();
 
         System.out.println("Result: \n" + result);

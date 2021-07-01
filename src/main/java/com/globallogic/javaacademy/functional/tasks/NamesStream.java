@@ -1,9 +1,10 @@
-package com.globallogic.javaacademy.functional.homework;
+package com.globallogic.javaacademy.functional.tasks;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Homework {
+public class NamesStream {
 
     /**
      * You have list of names. Please find all names
@@ -15,6 +16,12 @@ public class Homework {
      * Example: List ["Anna", "Rita", "Ala", "Piotr", "Patryk", "Wojtek"]
      * Result: {RITA=4, ANNA=4, PATRYK=6}
      */
+
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Anna", "Rita", "Ala", "Piotr", "Patryk", "Wojtek");
+        System.out.println(selectNames(names));
+    }
+
     public static Map<String, Integer> selectNames(final List<String> names) {
         return Map.of();
     }

@@ -1,11 +1,11 @@
 package com.globallogic.javaacademy.functional.methodreference;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 
+//@SuppressWarnings("all")
 public class MethodReferenceApp {
 
     List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
@@ -17,8 +17,12 @@ public class MethodReferenceApp {
         Consumer<Integer> lambda = number -> String.valueOf(number);
         Consumer<Integer> methodReference = String::valueOf;
 
-        numbers.forEach(number -> String.valueOf(number));
-        numbers.forEach(String::valueOf);
+        numbers.stream()
+                .map(number -> String.valueOf(number))
+                .forEach(number -> System.out.println(number));
+        numbers.stream()
+                .map(String::valueOf)
+                .forEach(number -> System.out.println(number));
     }
 
     // ================================================================
@@ -37,7 +41,7 @@ public class MethodReferenceApp {
     // ================================================================
     private void parameterAsTarget() {
         Consumer<Integer> lambda = number -> number.doubleValue();
-        Consumer<Integer> methodReference = number -> number.doubleValue();
+        Consumer<Integer> methodReference = Integer::doubleValue;
 
         numbers.forEach(number -> number.doubleValue());
         numbers.forEach(Integer::doubleValue);
@@ -49,7 +53,7 @@ public class MethodReferenceApp {
     // ================================================================
     private void twoParametersTargetAndArgument() {
         BinaryOperator<String> lambda = (total, str) -> total.concat(str);
-        BinaryOperator<String> methodReference = (total, str) -> total.concat(str);
+        BinaryOperator<String> methodReference = String::concat;
 
         numbers.stream()
                 .map(Object::toString)
@@ -79,7 +83,7 @@ public class MethodReferenceApp {
     // ================================================================
     private void referenceToConstructor() {
         Consumer<Integer> lambda = number -> new BigDecimal(number);
-        Consumer<Integer> methodReference = it -> new BigDecimal(it);
+        Consumer<Integer> methodReference = BigDecimal::new;
 
         numbers.forEach(number -> new BigDecimal(number));
         numbers.forEach(BigDecimal::new);

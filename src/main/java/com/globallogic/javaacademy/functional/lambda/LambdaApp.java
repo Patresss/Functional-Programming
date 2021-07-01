@@ -54,16 +54,26 @@ public class LambdaApp {
     // Custom Functional Interface
     // ================================================================
     private static void customFunctionalInterface() {
+        Payment paymentToHandle = new Payment(BigDecimal.ZERO, "USD", PaymentStatus.NEW);
+
         Long userId = 123L;
+        LocalDate date = LocalDate.now();
+
+
+//        if (paymentToHandle.getPaymentStatus() == PaymentStatus.NEW) {
+//            createPayment(paymentToHandle, userId, date);
+//        } else if (paymentToHandle.getPaymentStatus() == PaymentStatus.SUSPENDED) {
+//            stopPayment(paymentToHandle, userId, date);
+//        }
+//
         Map<PaymentStatus, PaymentHandler> statusHandlerMap = Map.of(
                 PaymentStatus.NEW, (payment, user, localDate) -> createPayment(payment, user, localDate),
                 PaymentStatus.SUSPENDED, (payment, user, localDate) -> stopPayment(payment, user, localDate)
         );
 
-        Payment payment = new Payment(BigDecimal.ZERO, "USD", PaymentStatus.NEW);
 
-        PaymentHandler paymentHandler = statusHandlerMap.get(payment.getPaymentStatus());
-        paymentHandler.handle(payment, userId, LocalDate.now());
+        PaymentHandler paymentHandler = statusHandlerMap.get(paymentToHandle.getPaymentStatus());
+        paymentHandler.handle(paymentToHandle, userId, date);
     }
 
     @FunctionalInterface

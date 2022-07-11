@@ -20,19 +20,19 @@ public class BehaviorParameterizationApp {
         );
 
         // #1 Client: "We need a new report - Could you write a function that returns only payments in PLN?"
-        var plnReport = filterPlnPayments(payments);
+        final List<Payment> plnReport = filterPlnPayments(payments);
         plnReport.forEach(System.out::println);
 
         // #2 Client: "Looks good! Could you do the same for USD?"
-        var customCurrencyReport = filterCurrencyPayments(payments, "USD");
+        final List<Payment> customCurrencyReport = filterCurrencyPayments(payments, "USD");
         customCurrencyReport.forEach(System.out::println);
 
         // #3 Client: "Super, we need one more for new payments"
-        var customTypeReport = filterCurrencyTypePayments(payments, "USD", PaymentStatus.NEW);
+        final List<Payment> customTypeReport = filterCurrencyTypePayments(payments, "USD", PaymentStatus.NEW);
         customTypeReport.forEach(System.out::println);
 
         // #4 Client: "we need one more for ..."
-        var customReport = filterPayments(payments, payment -> "USD".equals(payment.getCurrency()) && PaymentStatus.NEW == payment.getPaymentStatus());
+        final List<Payment> customReport = filterPayments(payments, payment -> "USD".equals(payment.getCurrency()) && PaymentStatus.NEW == payment.getPaymentStatus());
         customReport.forEach(System.out::println);
 
     }
@@ -50,7 +50,7 @@ public class BehaviorParameterizationApp {
 
     // #2
     private static List<Payment> filterCurrencyPayments(List<Payment> payments, String currency) {
-        final var result = new ArrayList<Payment>();
+        final List<Payment> result = new ArrayList<>();
         for (Payment payment: payments) {
             if (currency.equals(payment.getCurrency())) {
                 result.add(payment);
@@ -61,7 +61,7 @@ public class BehaviorParameterizationApp {
 
     // #3
     private static List<Payment> filterCurrencyTypePayments(List<Payment> payments, String currency, PaymentStatus paymentStatus) {
-        final var result = new ArrayList<Payment>();
+        final List<Payment> result = new ArrayList<>();
         for (Payment payment: payments) {
             if (currency.equals(payment.getCurrency()) && paymentStatus == payment.getPaymentStatus()) {
                 result.add(payment);
@@ -72,7 +72,7 @@ public class BehaviorParameterizationApp {
 
     // #4
     private static List<Payment> filterPayments(List<Payment> payments, Predicate<Payment> predicate) {
-        final var result = new ArrayList<Payment>();
+        final List<Payment> result = new ArrayList<>();
         for (Payment payment: payments) {
             if (predicate.test(payment)) {
                 result.add(payment);

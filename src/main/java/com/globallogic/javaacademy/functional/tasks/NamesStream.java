@@ -3,6 +3,8 @@ package com.globallogic.javaacademy.functional.tasks;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class NamesStream {
 
@@ -23,7 +25,12 @@ public class NamesStream {
     }
 
     public static Map<String, Integer> selectNames(final List<String> names) {
-        return Map.of();
+        // show debug mode
+        return names.stream()
+                .map(String::toUpperCase)
+                .filter(name -> name.contains("A"))
+                .filter(name -> name.length() >= 4)
+                .collect(Collectors.toMap(Function.identity(), String::length));
     }
 
 }

@@ -5,7 +5,9 @@ import com.globallogic.javaacademy.model.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -28,6 +30,10 @@ public class LambdaApp {
 
         // After Java 8
         Comparator<Payment> byAmountLambda = (p1, p2) -> p1.getAmount().compareTo(p2.getAmount());
+
+
+        Collections.sort(List.of(), byAmount);
+
     }
 
 
@@ -54,38 +60,36 @@ public class LambdaApp {
     // Custom Functional Interface
     // ================================================================
     private static void customFunctionalInterface() {
-        Payment paymentToHandle = new Payment(BigDecimal.ZERO, "USD", PaymentStatus.NEW);
+        final Payment paymentToHandle = new Payment(BigDecimal.ZERO, "USD", PaymentStatus.NEW);
 
-        Long userId = 123L;
-        LocalDate date = LocalDate.now();
+        final Long userId = 123L;
 
 
 //        if (paymentToHandle.getPaymentStatus() == PaymentStatus.NEW) {
-//            createPayment(paymentToHandle, userId, date);
+//            createPayment(paymentToHandle, userId);
 //        } else if (paymentToHandle.getPaymentStatus() == PaymentStatus.SUSPENDED) {
-//            stopPayment(paymentToHandle, userId, date);
+//            stopPayment(paymentToHandle, userId);
 //        }
 //
-        Map<PaymentStatus, PaymentHandler> statusHandlerMap = Map.of(
-                PaymentStatus.NEW, (payment, user, localDate) -> createPayment(payment, user, localDate),
-                PaymentStatus.SUSPENDED, (payment, user, localDate) -> stopPayment(payment, user, localDate)
+        final Map<PaymentStatus, PaymentHandler> statusHandlerMap = Map.of(
+                PaymentStatus.NEW, (payment, user) -> createPayment(payment, user),
+                PaymentStatus.SUSPENDED, (payment, user) -> stopPayment(payment, user)
         );
 
-
-        PaymentHandler paymentHandler = statusHandlerMap.get(paymentToHandle.getPaymentStatus());
-        paymentHandler.handle(paymentToHandle, userId, date);
+        final PaymentHandler paymentHandler = statusHandlerMap.get(paymentToHandle.getPaymentStatus());
+        paymentHandler.handle(paymentToHandle, userId);
     }
 
     @FunctionalInterface
     interface PaymentHandler {
-        void handle(Payment payment, Long userId, LocalDate date);
+        void handle(Payment payment, Long userId);
     }
 
-    private static void stopPayment(Payment payment, Long userId, LocalDate localDate) {
+    private static void stopPayment(Payment payment, Long userId) {
         // ...
     }
 
-    private static void createPayment(Payment payment, Long userId, LocalDate localDate) {
+    private static void createPayment(Payment payment, Long userId) {
         // ...
     }
 

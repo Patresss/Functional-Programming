@@ -56,6 +56,7 @@ public class OptionalApp {
                 .map(Concert::getMusicBand)
                 .map(MusicBand::getMusicStar)
                 .map(MusicStar::getAddress)
+//                .flatMap(MusicStar::getAddress)
                 .map(Address::getCity)
                 .ifPresent(System.out::println)
         );
@@ -81,9 +82,9 @@ public class OptionalApp {
 
         System.out.println("orElseGet:");
         String name3 = Optional.ofNullable("VALUE")
-                .orElseGet(this::calculateDefaultName);
+                .orElseGet(() -> calculateDefaultName());
         String name4 = Optional.ofNullable(getNameFromApi())
-                .orElseGet(this::calculateDefaultName);
+                .orElseGet(() -> calculateDefaultName());
     }
 
     @Test

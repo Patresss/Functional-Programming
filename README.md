@@ -1,7 +1,10 @@
-# Functional Programming
+# FUNctional Programming
 
-* Behavior Parameterization
 * Lambda
+* Behavior Parameterization
 * Method Reference
 * Stream
 * Optional
+* Immutability
+* Quiz
+* Taska

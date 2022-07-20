@@ -1,4 +1,4 @@
-package com.globallogic.javaacademy.step8.tasks.task3.model;
+package com.globallogic.javaacademy.functional.step8.tasks.task3.model;
 
 public class Client {
 

@@ -1,4 +1,4 @@
-package com.globallogic.javaacademy.step8.tasks.task1;
+package com.globallogic.javaacademy.functional.step8.tasks.task1;
 
 import java.util.Map;
 import java.util.TreeMap;

@@ -1,4 +1,4 @@
-package com.globallogic.javaacademy.step8.tasks.task4.fee;
+package com.globallogic.javaacademy.functional.step8.tasks.task4;
 
 
 import java.math.BigDecimal;

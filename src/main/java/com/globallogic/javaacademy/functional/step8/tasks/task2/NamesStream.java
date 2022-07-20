@@ -1,4 +1,4 @@
-package com.globallogic.javaacademy.step8.tasks.task2;
+package com.globallogic.javaacademy.functional.step8.tasks.task2;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.globallogic.javaacademy.step8.tasks.task3.exception;
+package com.globallogic.javaacademy.functional.step8.tasks.task3.exception;
 
 public class DiscoClubException extends RuntimeException {
 

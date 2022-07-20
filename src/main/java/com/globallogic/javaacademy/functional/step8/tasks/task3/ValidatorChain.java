@@ -1,6 +1,6 @@
-package com.globallogic.javaacademy.step8.tasks.task3;
+package com.globallogic.javaacademy.functional.step8.tasks.task3;
 
-import com.globallogic.javaacademy.step8.tasks.task3.exception.DiscoClubException;
+import com.globallogic.javaacademy.functional.step8.tasks.task3.exception.DiscoClubException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.globallogic.javaacademy.step8.tasks.task3;
+package com.globallogic.javaacademy.functional.step8.tasks.task3;
 
-import com.globallogic.javaacademy.step8.tasks.task3.exception.DiscoClubException;
-import com.globallogic.javaacademy.step8.tasks.task3.model.Client;
-import com.globallogic.javaacademy.step8.tasks.task3.model.ClientStatus;
-import com.globallogic.javaacademy.step8.tasks.task3.model.Gender;
+import com.globallogic.javaacademy.functional.step8.tasks.task3.exception.DiscoClubException;
+import com.globallogic.javaacademy.functional.step8.tasks.task3.model.Client;
+import com.globallogic.javaacademy.functional.step8.tasks.task3.model.ClientStatus;
+import com.globallogic.javaacademy.functional.step8.tasks.task3.model.Gender;
 
 public class LatinoNightValidator {
 

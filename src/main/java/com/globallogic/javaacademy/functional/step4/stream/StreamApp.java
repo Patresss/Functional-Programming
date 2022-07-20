@@ -228,7 +228,7 @@ public class StreamApp {
         // ===================================================================
         boolean resultWithoutStream = true;
         for (Payment payment : payments) {
-            if (payment.getPaymentStatus() != PaymentStatus.NEW) {
+            if (payment.getPaymentStatus() == PaymentStatus.NEW) {
                 resultWithoutStream = false;
                 break;
             }

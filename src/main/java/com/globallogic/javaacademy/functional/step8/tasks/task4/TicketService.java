@@ -12,17 +12,17 @@ public class TicketService {
         this.inflationProvider = inflationProvider;
     }
 
-    public BigDecimal calculateFee(final Ticket ticket) {
-        if (ticket.getTicketType() == TicketType.STANDARD) {
-            return BigDecimal.valueOf(1.00);
-        } else if (ticket.getTicketType() == TicketType.PREMIUM) {
-            return ticket.getPrice().add(BigDecimal.valueOf(10.0));
-        } else if (ticket.getTicketType() == TicketType.ULTIMATE) {
-            final BigDecimal inflation = inflationProvider.provideInflation();
-            return ticket.getPrice().multiply(inflation);
-        } else {
-            throw new RuntimeException("Invalid ticket status");
-        }
+    public BigDecimal calculateFee(final Ticket ticket){
+        return ticket.getTicketType().calculatePrice.apply(this, ticket);
     }
-
+    public BigDecimal calculateStandardFee(final Ticket ticket){
+        return BigDecimal.valueOf(1.00);
+    }
+    public BigDecimal calculatePremiumFee(final Ticket ticket){
+        return ticket.getPrice().add(BigDecimal.valueOf(10.0));
+    }
+    public BigDecimal calculateUltimateFee(final Ticket ticket){
+        final BigDecimal inflation = inflationProvider.provideInflation();
+        return ticket.getPrice().multiply(inflation);
+    }
 }
